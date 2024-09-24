@@ -1,0 +1,10 @@
+package com.mtg.cudmtgset.Services;
+
+import java.util.List;
+
+import com.mtg.cudmtgset.Models.MTGSetCardModel;
+public interface ICardService {
+    MTGSetCardModel saveOne(MTGSetCardModel cardModel);
+    List<MTGSetCardModel> saveAll(List<MTGSetCardModel> cardModels);
+    long deleteAll();
+}
