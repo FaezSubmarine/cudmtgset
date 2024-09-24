@@ -5,6 +5,6 @@ import java.util.List;
 import com.mtg.cudmtgset.Models.MTGSetCardModel;
 public interface ICardService {
     MTGSetCardModel saveOne(MTGSetCardModel cardModel);
-    List<MTGSetCardModel> saveAll(List<MTGSetCardModel> cardModels);
+    Boolean saveAll(List<MTGSetCardModel> cardModels);
     long deleteAll();
 }

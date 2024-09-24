@@ -8,7 +8,7 @@ import com.mtg.cudmtgset.Models.MTGSetCardModel;
 
 @Repository
 public interface CardRepo {
-    MTGSetCardModel save(MTGSetCardModel cardModel);
-    List<MTGSetCardModel> saveAll(List<MTGSetCardModel> cardModels);
-    
+    Boolean save(MTGSetCardModel cardModel);
+    Boolean saveAll(List<MTGSetCardModel> cardModels);
+    Long deleteAll();
 }

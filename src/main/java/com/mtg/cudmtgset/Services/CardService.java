@@ -21,15 +21,13 @@ public class CardService implements ICardService{
     }
 
     @Override
-    public List<MTGSetCardModel> saveAll(List<MTGSetCardModel> cardModels) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveAll'");
+    public Boolean saveAll(List<MTGSetCardModel> cardModels) {
+        return cardRepo.saveAll(cardModels);
     }
 
     @Override
     public long deleteAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAll'");
+        return cardRepo.deleteAll();
     }
 
 }
