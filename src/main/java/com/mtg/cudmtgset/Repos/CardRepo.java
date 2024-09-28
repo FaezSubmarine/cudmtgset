@@ -10,5 +10,6 @@ import com.mtg.cudmtgset.Models.MTGSetCardModel;
 public interface CardRepo {
     Boolean save(MTGSetCardModel cardModel);
     Boolean saveAll(List<MTGSetCardModel> cardModels);
+    List<String> getAllSets();
     Long deleteAll();
 }

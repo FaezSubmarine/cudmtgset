@@ -29,5 +29,9 @@ public class CardService implements ICardService{
     public long deleteAll() {
         return cardRepo.deleteAll();
     }
+    @Override
+    public List<String> getAllSets() {
+        return cardRepo.getAllSets();
+    }
 
 }

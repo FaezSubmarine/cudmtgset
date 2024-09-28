@@ -1,10 +1,13 @@
 package com.mtg.cudmtgset.Controllers;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
+
 import org.slf4j.Logger;
 
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,15 +18,24 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mtg.cudmtgset.MongoDBConfig;
 import com.mtg.cudmtgset.Models.MTGSetCardModel;
+import com.mtg.cudmtgset.Repos.MongoDBCardRepo;
 import com.mtg.cudmtgset.Services.ICardService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.nio.file.Path;
 
 @RestController
 public class CardController {
@@ -37,6 +49,26 @@ public class CardController {
     public String ping() {
         return "Ping";
     }
+    //return all distinct values of the set field
+    @GetMapping("DownloadAllSets")
+    public ResponseEntity<Resource> getMethodName() throws FileNotFoundException,IOException {
+        HttpHeaders header = new HttpHeaders();
+        header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=AllSets.txt");
+        header.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        header.add("Pragma", "no-cache");
+        header.add("Expires", "0");
+
+        String allSets = String.join(",",cardService.getAllSets());
+        byte[] bytes = allSets.getBytes();
+        ByteArrayResource resource = new ByteArrayResource(bytes);
+
+        return ResponseEntity.ok()
+            .headers(header)
+            .contentLength(resource.contentLength())
+            .contentType(MediaType.APPLICATION_OCTET_STREAM)
+            .body(resource);
+    }
+    
     @PostMapping(path = "/PostOneCard", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public String postOneCard(@RequestPart("file") MultipartFile filename) throws JsonMappingException, JsonProcessingException,IOException{
         String content = new String(filename.getBytes());

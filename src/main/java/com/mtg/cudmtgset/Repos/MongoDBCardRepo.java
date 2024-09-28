@@ -1,5 +1,6 @@
 package com.mtg.cudmtgset.Repos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.BsonDocument;
@@ -13,6 +14,7 @@ import com.mongodb.ReadPreference;
 import com.mongodb.TransactionOptions;
 import com.mongodb.WriteConcern;
 import com.mongodb.client.ClientSession;
+import com.mongodb.client.DistinctIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mtg.cudmtgset.Models.MTGSetCardModel;
@@ -59,6 +61,15 @@ public class MongoDBCardRepo implements CardRepo{
                     () -> cardCollection.deleteMany(clientSession, new BsonDocument()).getDeletedCount(), transOption);
         }
 
+    }
+
+    @Override
+    public List<String> getAllSets() {
+        // TODO Auto-generated method stub
+        DistinctIterable<String> res = cardCollection.distinct("set_name",String.class);
+        List<String> target = new ArrayList<>();
+        res.forEach(target::add);
+        return target;
     }
 
 }
