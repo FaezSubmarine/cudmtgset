@@ -18,9 +18,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mtg.cudmtgset.MongoDBConfig;
 import com.mtg.cudmtgset.Models.MTGSetCardModel;
-import com.mtg.cudmtgset.Repos.MongoDBCardRepo;
 import com.mtg.cudmtgset.Services.ICardService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,14 +26,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.nio.file.Path;
 
 @RestController
 public class CardController {

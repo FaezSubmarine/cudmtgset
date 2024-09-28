@@ -45,6 +45,12 @@ public class MTGSetCardModel {
     public String getName() {
         return name;
     }
+    public String getRarity(){
+        return rarity;
+    }
+    public void setRarity(String rarity){
+        this.rarity = rarity;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -118,6 +124,8 @@ public class MTGSetCardModel {
     @Id private String id;
     @JsonProperty("name")
     String name;
+    @JsonProperty("rarity")
+    String rarity;
     @JsonProperty("lang")
     String lang;
     String png;
@@ -149,7 +157,7 @@ public class MTGSetCardModel {
 
     @Override
     public String toString(){
-        return String.format("{\"_id\":%s,\"name\":%s,\"lang\":%s,\"png\":%s,\"mana_cost\":%s,\"cmc\":%s,\"type_line\":\"%s\",\"bottom_text\":%s,\"colors\":%s,\"keywords\":%s,\"legalties\":%s,\"set\":%s,\"set_name\":%s}",
-                                     id,name,lang,png,mana_cost,String.valueOf(cmc),type_line,bottom_text,String.join(", ",colors),String.join(", ", keywords),legalities.toString(),set,set_name);
+        return String.format("{\"_id\":%s,\"name\":%s,\"rarity\":%s,\"lang\":%s,\"png\":%s,\"mana_cost\":%s,\"cmc\":%s,\"type_line\":\"%s\",\"bottom_text\":%s,\"colors\":%s,\"keywords\":%s,\"legalties\":%s,\"set\":%s,\"set_name\":%s}",
+                                     id,name,rarity,lang,png,mana_cost,String.valueOf(cmc),type_line,bottom_text,String.join(", ",colors),String.join(", ", keywords),legalities.toString(),set,set_name);
     }
 }

@@ -37,3 +37,4 @@ out/
 .vscode/
 
 application.properties
+src/main/java/com/mtg/cudmtgset/Controllers/cudmtgset.code-workspace
