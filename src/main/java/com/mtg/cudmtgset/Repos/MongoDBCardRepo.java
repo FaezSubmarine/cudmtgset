@@ -65,7 +65,6 @@ public class MongoDBCardRepo implements CardRepo{
 
     @Override
     public List<String> getAllSets() {
-        // TODO Auto-generated method stub
         DistinctIterable<String> res = cardCollection.distinct("set_name",String.class);
         List<String> target = new ArrayList<>();
         res.forEach(target::add);

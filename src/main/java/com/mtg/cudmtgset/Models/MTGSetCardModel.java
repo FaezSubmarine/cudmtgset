@@ -139,7 +139,7 @@ public class MTGSetCardModel {
     int cmc;
     @JsonProperty("type_line")
     String type_line;
-    @JsonProperty("bottom_text")
+    @JsonProperty("oracle_text")
     String bottom_text;
     @JsonProperty("color_identity")
     List<String> colors;

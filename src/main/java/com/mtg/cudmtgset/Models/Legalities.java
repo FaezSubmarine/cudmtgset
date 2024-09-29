@@ -1,7 +1,7 @@
 package com.mtg.cudmtgset.Models;
 
 import java.util.Map;
-
+import java.util.Objects;
 public class Legalities {
     public Boolean getStandard() {
         return standard;
@@ -160,28 +160,28 @@ public class Legalities {
          predh = false;
     }
     public Legalities(Map<String,String> legStr){
-        standard = legStr.get("standard") == "legal";
-        future = legStr.get("future") == "legal";
-        historic = legStr.get("historic") == "legal";
-        timeless = legStr.get("timeless") == "legal";
-        gladiator = legStr.get("gladiator") == "legal";
-        pioneer = legStr.get("pioneer") == "legal";
-        explorer = legStr.get("explorer") == "legal";
-        modern = legStr.get("modern") == "legal";
-        legacy = legStr.get("legacy") == "legal";
-        pauper = legStr.get("pauper") == "legal";
-        vintage = legStr.get("vintage") == "legal";
-        penny = legStr.get("penny") == "legal";
-        commander = legStr.get("commander") == "legal";
-        oathbreaker = legStr.get("oathbreaker") == "legal";
-        standardbrawl = legStr.get("standardbrawl") == "legal";
-        brawl = legStr.get("brawl") == "legal";
-        alchemy = legStr.get("alchemy") == "legal";
-        paupercommander = legStr.get("paupercommander") == "legal";
-        duel = legStr.get("duel") == "legal";
-        oldschool = legStr.get("oldschool") == "legal";
-        premodern = legStr.get("premodern") == "legal";
-        predh = legStr.get("predh") == "legal";
+        standard =  Objects.equals(legStr.get("standard"),("legal"));
+        future = Objects.equals(legStr.get("future"),("legal"));
+        historic = Objects.equals(legStr.get("historic"),("legal"));
+        timeless = Objects.equals(legStr.get("timeless"),("legal"));
+        gladiator = Objects.equals(legStr.get("gladiator") ,("legal"));
+        pioneer = Objects.equals(legStr.get("pioneer"),("legal"));
+        explorer = Objects.equals(legStr.get("explorer"),("legal"));
+        modern = Objects.equals(legStr.get("modern"),("legal"));
+        legacy = Objects.equals(legStr.get("legacy"),("legal"));
+        pauper = Objects.equals(legStr.get("pauper"),("legal"));
+        vintage = Objects.equals(legStr.get("vintage"),("legal"));
+        penny = Objects.equals(legStr.get("penny"),("legal"));
+        commander = Objects.equals(legStr.get("commander"),("legal"));
+        oathbreaker = Objects.equals(legStr.get("oathbreaker"),("legal"));
+        standardbrawl = Objects.equals(legStr.get("standardbrawl"),("legal"));
+        brawl = Objects.equals(legStr.get("brawl"),("legal"));
+        alchemy = Objects.equals(legStr.get("alchemy"),("legal"));
+        paupercommander = Objects.equals(legStr.get("paupercommander"),("legal"));
+        duel = Objects.equals(legStr.get("duel"),("legal"));
+        oldschool = Objects.equals(legStr.get("oldschool"),("legal"));
+        premodern = Objects.equals(legStr.get("premodern"),("legal"));
+        predh = Objects.equals(legStr.get("predh"),("legal"));
     }
     Boolean standard;
     Boolean future;
